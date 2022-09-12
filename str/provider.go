@@ -45,7 +45,6 @@ type TrimPrefixArgs struct {
 	S      string `pulumi:"string"`
 	Prefix string `pulumi:"prefix"`
 }
-
 type TrimPrefixResult struct {
 	Result string `pulumi:"result"`
 }
@@ -56,12 +55,15 @@ func (*TrimPrefix) Call(ctx p.Context, input TrimPrefixArgs) (TrimPrefixResult, 
 	}, nil
 }
 
+func (t *TrimPrefix) Annotate(a infer.Annotator) {
+	a.Describe(t, "Trim a prefix from a string.")
+}
+
 type TrimSuffix struct{}
 type TrimSuffixArgs struct {
 	S      string `pulumi:"string"`
 	Suffix string `pulumi:"suffix"`
 }
-
 type TrimSuffixResult struct {
 	Result string `pulumi:"result"`
 }
@@ -70,4 +72,8 @@ func (*TrimSuffix) Call(ctx p.Context, input TrimSuffixArgs) (TrimSuffixResult, 
 	return TrimSuffixResult{
 		Result: strings.TrimSuffix(input.S, input.Suffix),
 	}, nil
+}
+
+func (t *TrimSuffix) Annotate(a infer.Annotator) {
+	a.Describe(t, "Trim a suffix from a string.")
 }

@@ -14,7 +14,6 @@ type ReplaceArgs struct {
 	Old string `pulumi:"old"`
 	New string `pulumi:"new"`
 }
-
 type ReplaceResult struct {
 	Result string `pulumi:"result"`
 }
