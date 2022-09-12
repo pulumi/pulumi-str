@@ -1,0 +1,26 @@
+name: example-test
+runtime: yaml
+
+plugins:
+  providers:
+    - name: str
+      path: ../../bin
+
+variables:
+  simple-replace:
+    Fn::str:replace:
+      string: fizz-bar
+      old: bar
+      new: buzz
+
+  regexp-replace:
+    Fn::str:regexp:replace:
+      string: fizz-foo-bar
+      old: -.*
+      new: -buzz
+
+outputs:
+  simple-replace:
+    ${simple-replace.result}
+  regexp-replace:
+    ${regexp-replace.result}
