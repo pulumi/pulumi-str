@@ -1,0 +1,7 @@
+name: str-golang
+runtime: go
+
+plugins:
+  providers:
+    - name: str
+      path: ../../bin
