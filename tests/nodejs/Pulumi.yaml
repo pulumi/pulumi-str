@@ -1,0 +1,7 @@
+name: str-nodejs
+runtime: nodejs
+
+plugins:
+  providers:
+    - name: str
+      path: ../../bin

@@ -19,7 +19,11 @@ func Provider() p.Provider {
 		map[tokens.ModuleName]tokens.ModuleName{
 			"str": "index",
 		},
-	).WithDescription("Basic string manipulation funcions").
+	).WithLanguageMap(map[string]any{
+		"nodejs": map[string]any{
+			"respectSchemaVersion": true,
+		},
+	}).WithDescription("Basic string manipulation funcions").
 		WithDisplayName("String").
 		WithHomepage("https://github.com/pulumi/pulumi-str").
 		WithPublisher("Pulumi").

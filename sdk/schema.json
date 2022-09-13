@@ -1,10 +1,16 @@
 {
   "name": "str",
   "displayName": "String",
+  "version": "0.1.0",
   "description": "Basic string manipulation funcions",
   "homepage": "https://github.com/pulumi/pulumi-str",
   "repository": "https://github.com/pulumi/pulumi-str",
   "publisher": "Pulumi",
+  "language": {
+    "nodejs": {
+      "respectSchemaVersion": true
+    }
+  },
   "config": {},
   "provider": {},
   "functions": {

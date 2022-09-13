@@ -1,0 +1,7 @@
+{
+    "name": "test",
+    "dependencies": {
+        "@pulumi/pulumi": "latest",
+        "@pulumi/str": "../../sdk/nodejs/"
+    }
+}
