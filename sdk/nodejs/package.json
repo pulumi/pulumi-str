@@ -1,0 +1,20 @@
+{
+    "name": "@pulumi/str",
+    "version": "${VERSION}",
+    "homepage": "https://github.com/pulumi/pulumi-str",
+    "repository": "https://github.com/pulumi/pulumi-str",
+    "scripts": {
+        "build": "tsc",
+        "install": "node scripts/install-pulumi-plugin.js resource str ${VERSION}"
+    },
+    "devDependencies": {
+        "typescript": "^4.3.5"
+    },
+    "peerDependencies": {
+        "@pulumi/pulumi": "latest"
+    },
+    "pulumi": {
+        "resource": true,
+        "name": "str"
+    }
+}

@@ -83,7 +83,7 @@ func sdkCmd() *cobra.Command {
 				f = func(s string, p *pschema.Package, m map[string][]byte) (map[string][]byte, error) {
 					return gogen.GeneratePackage(s, p)
 				}
-			case "csharp", "c#":
+			case "csharp", "c#", "dotnet":
 				f = dotnetgen.GeneratePackage
 			default:
 				endIf(fmt.Errorf("unrecognized language: %q", language))

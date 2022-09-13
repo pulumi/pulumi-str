@@ -1,5 +1,12 @@
 package str
 
+import (
+	"strings"
+
+	p "github.com/pulumi/pulumi-go-provider"
+	"github.com/pulumi/pulumi-go-provider/infer"
+)
+
 type Replace struct{}
 type ReplaceArgs struct {
 	S   string `pulumi:"string"`

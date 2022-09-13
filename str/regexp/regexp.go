@@ -68,7 +68,7 @@ func (s *SplitArgs) Annotate(a infer.Annotator) {
 	a.Describe(&s.N, "`count` determines the number of substrings to return. \n"+
 		"If `count` is not provided, it defaults to substrings.\n"+
 		"If `count` is provided then the last substring will be the unsplit remainder.\n"+
-		"It is an error to pass `count` < 1.")
+		"It is an error to pass `count < 1`.")
 	a.Describe(&s.On, "The regex to split on.")
 	a.Describe(&s.S, "The string on which to split.")
 }

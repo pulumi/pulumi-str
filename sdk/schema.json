@@ -1,0 +1,178 @@
+{
+  "name": "str",
+  "displayName": "String",
+  "description": "Basic string manipulation funcions",
+  "homepage": "https://github.com/pulumi/pulumi-str",
+  "repository": "https://github.com/pulumi/pulumi-str",
+  "publisher": "Pulumi",
+  "config": {},
+  "provider": {},
+  "functions": {
+    "str:index:replace": {
+      "inputs": {
+        "properties": {
+          "new": {
+            "type": "string"
+          },
+          "old": {
+            "type": "string"
+          },
+          "string": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "string",
+          "old",
+          "new"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "str:index:trimPrefix": {
+      "description": "Trim a prefix from a string.",
+      "inputs": {
+        "properties": {
+          "prefix": {
+            "type": "string"
+          },
+          "string": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "string",
+          "prefix"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "str:index:trimSuffix": {
+      "description": "Trim a suffix from a string.",
+      "inputs": {
+        "properties": {
+          "string": {
+            "type": "string"
+          },
+          "suffix": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "string",
+          "suffix"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "str:regexp:replace": {
+      "description": "A regex based replace on a string.\n\nThe underlying regexp engine is the go \"regexp\" stdlib package.\nYou can see details at for available patterns at https://pkg.go.dev/regexp/syntax.",
+      "inputs": {
+        "properties": {
+          "new": {
+            "type": "string",
+            "description": "The new string.\n\nNote: Inside repl, \"$\" signs are interpreted as an Expand, so for instance $1 represents the text of the first submatch. "
+          },
+          "old": {
+            "type": "string",
+            "description": "The regular expression to match against."
+          },
+          "string": {
+            "type": "string",
+            "description": "The string to operate over."
+          }
+        },
+        "type": "object",
+        "required": [
+          "string",
+          "old",
+          "new"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "string",
+            "description": "The input \"string\" where each pattern matching \"old\" is replaced by \"new\"."
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    },
+    "str:regexp:split": {
+      "description": "Split a string on a regex.",
+      "inputs": {
+        "properties": {
+          "count": {
+            "type": "integer",
+            "description": "`count` determines the number of substrings to return. \nIf `count` is not provided, it defaults to substrings.\nIf `count` is provided then the last substring will be the unsplit remainder.\nIt is an error to pass `count < 1`."
+          },
+          "on": {
+            "type": "string",
+            "description": "The regex to split on."
+          },
+          "string": {
+            "type": "string",
+            "description": "The string on which to split."
+          }
+        },
+        "type": "object",
+        "required": [
+          "string",
+          "on"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The result of the string split."
+          }
+        },
+        "type": "object",
+        "required": [
+          "result"
+        ]
+      }
+    }
+  }
+}
