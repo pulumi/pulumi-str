@@ -28,7 +28,10 @@ test_prep: build_sdks
 test: test_go test_nodejs
 	pulumi logout
 	rm -r $$PWD/state
-	pulumi login
+	if [[ "$$CI" == "" ]]; then pulumi login; fi
+# If we are running locally, we log back in to the previous pulumi account.
+# We don't do this in CI since the CI has no previous account.
+
 test_go: test_prep
 	cd tests/golang && pulumi stack select -c test_go
 	cd tests/golang && pulumi up --yes --skip-preview
