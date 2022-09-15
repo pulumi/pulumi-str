@@ -18,6 +18,7 @@
   "provider": {},
   "functions": {
     "str:index:replace": {
+      "description": "Replace returns a copy of the string s with all\nnon-overlapping instances of old replaced by new.\nIf old is empty, it matches at the beginning of the string\nand after each UTF-8 sequence, yielding up to k+1 replacements\nfor a k-rune string.",
       "inputs": {
         "properties": {
           "new": {
@@ -113,7 +114,7 @@
         "properties": {
           "new": {
             "type": "string",
-            "description": "The new string.\n\nNote: Inside repl, \"$\" signs are interpreted as an Expand, so for instance $1 represents the text of the first submatch. "
+            "description": "The new string.\n\nNote: Inside repl, \"$\" signs are interpreted as an Expand, so for instance\n$1 represents the text of the first submatch. "
           },
           "old": {
             "type": "string",

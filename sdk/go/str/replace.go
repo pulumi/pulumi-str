@@ -10,6 +10,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Replace returns a copy of the string s with all
+// non-overlapping instances of old replaced by new.
+// If old is empty, it matches at the beginning of the string
+// and after each UTF-8 sequence, yielding up to k+1 replacements
+// for a k-rune string.
 func Replace(ctx *pulumi.Context, args *ReplaceArgs, opts ...pulumi.InvokeOption) (*ReplaceResult, error) {
 	var rv ReplaceResult
 	err := ctx.Invoke("str:index:replace", args, &rv, opts...)

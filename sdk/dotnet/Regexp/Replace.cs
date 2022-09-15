@@ -36,7 +36,8 @@ namespace Pulumi.Str.Regexp
         /// <summary>
         /// The new string.
         /// 
-        /// Note: Inside repl, "$" signs are interpreted as an Expand, so for instance $1 represents the text of the first submatch. 
+        /// Note: Inside repl, "$" signs are interpreted as an Expand, so for instance
+        /// $1 represents the text of the first submatch. 
         /// </summary>
         [Input("new", required: true)]
         public string New { get; set; } = null!;
@@ -64,7 +65,8 @@ namespace Pulumi.Str.Regexp
         /// <summary>
         /// The new string.
         /// 
-        /// Note: Inside repl, "$" signs are interpreted as an Expand, so for instance $1 represents the text of the first submatch. 
+        /// Note: Inside repl, "$" signs are interpreted as an Expand, so for instance
+        /// $1 represents the text of the first submatch. 
         /// </summary>
         [Input("new", required: true)]
         public Input<string> New { get; set; } = null!;

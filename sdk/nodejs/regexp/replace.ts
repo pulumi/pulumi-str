@@ -27,7 +27,8 @@ export interface ReplaceArgs {
     /**
      * The new string.
      *
-     * Note: Inside repl, "$" signs are interpreted as an Expand, so for instance $1 represents the text of the first submatch. 
+     * Note: Inside repl, "$" signs are interpreted as an Expand, so for instance
+     * $1 represents the text of the first submatch. 
      */
     new: string;
     /**
@@ -55,7 +56,8 @@ export interface ReplaceOutputArgs {
     /**
      * The new string.
      *
-     * Note: Inside repl, "$" signs are interpreted as an Expand, so for instance $1 represents the text of the first submatch. 
+     * Note: Inside repl, "$" signs are interpreted as an Expand, so for instance
+     * $1 represents the text of the first submatch. 
      */
     new: pulumi.Input<string>;
     /**

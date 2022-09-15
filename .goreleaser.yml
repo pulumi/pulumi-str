@@ -1,0 +1,24 @@
+dist: goreleaser
+project_name: pulumi-str
+snapshot:
+  name_template: "{{ .Version }}-SNAPSHOT"
+checksum:
+  name_template: "{{ .ProjectName }}-{{ .Version }}-checksums.txt"
+archives:
+  - id: archive
+    name_template: "{{ .Binary }}-{{ .Tag }}-{{ .Os }}-{{ .Arch }}"
+builds:
+  - id: pulumi-resource-str
+    binary: pulumi-resource-str
+    goarch:
+      - amd64
+      - arm64
+    goos:
+      - darwin
+      - windows
+      - linux
+    ldflags:
+      - -s
+      - -w
+      - -X github.com/pulumi/pulumi-str/str/version.Version={{.Tag}}
+    main: ./str/cmd/pulumi-resource-str/
