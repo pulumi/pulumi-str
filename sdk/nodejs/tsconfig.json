@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "outDir": "bin",
+        "target": "es2016",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "declaration": true,
+        "sourceMap": true,
+        "stripInternal": true,
+        "experimentalDecorators": true,
+        "noFallthroughCasesInSwitch": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true
+    },
+    "files": [
+        "index.ts",
+        "provider.ts",
+        "regexp/index.ts",
+        "regexp/replace.ts",
+        "regexp/split.ts",
+        "replace.ts",
+        "trimPrefix.ts",
+        "trimSuffix.ts",
+        "utilities.ts"
+    ]
+}

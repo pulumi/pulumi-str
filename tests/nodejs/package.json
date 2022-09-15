@@ -1,0 +1,6 @@
+{
+    "name": "test",
+    "dependencies": {
+        "@pulumi/pulumi": "^3.40.0"
+    }
+}
