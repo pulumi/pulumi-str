@@ -14,6 +14,14 @@ type ReplaceArgs struct {
 	New string `pulumi:"new"`
 }
 
+func (r *Replace) Annotate(a infer.Annotator) {
+	a.Describe(r, `Replace returns a copy of the string s with all
+non-overlapping instances of old replaced by new.
+If old is empty, it matches at the beginning of the string
+and after each UTF-8 sequence, yielding up to k+1 replacements
+for a k-rune string.`)
+}
+
 type ReplaceResult struct {
 	Result string `pulumi:"result"`
 }
