@@ -25,4 +25,5 @@ builds:
       - -s
       - -w
       - -X github.com/pulumi/pulumi-str/str/version.Version={{.Tag}}
-    main: ./str/cmd/pulumi-resource-str/
+    main: ./cmd/pulumi-resource-str/
+    dir: str
