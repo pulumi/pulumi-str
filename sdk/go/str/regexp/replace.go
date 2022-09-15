@@ -26,7 +26,8 @@ func Replace(ctx *pulumi.Context, args *ReplaceArgs, opts ...pulumi.InvokeOption
 type ReplaceArgs struct {
 	// The new string.
 	//
-	// Note: Inside repl, "$" signs are interpreted as an Expand, so for instance $1 represents the text of the first submatch.
+	// Note: Inside repl, "$" signs are interpreted as an Expand, so for instance
+	// $1 represents the text of the first submatch.
 	New string `pulumi:"new"`
 	// The regular expression to match against.
 	Old string `pulumi:"old"`
@@ -55,7 +56,8 @@ func ReplaceOutput(ctx *pulumi.Context, args ReplaceOutputArgs, opts ...pulumi.I
 type ReplaceOutputArgs struct {
 	// The new string.
 	//
-	// Note: Inside repl, "$" signs are interpreted as an Expand, so for instance $1 represents the text of the first submatch.
+	// Note: Inside repl, "$" signs are interpreted as an Expand, so for instance
+	// $1 represents the text of the first submatch.
 	New pulumi.StringInput `pulumi:"new"`
 	// The regular expression to match against.
 	Old pulumi.StringInput `pulumi:"old"`

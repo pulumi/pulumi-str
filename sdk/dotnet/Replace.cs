@@ -11,9 +11,23 @@ namespace Pulumi.Str
 {
     public static class Replace
     {
+        /// <summary>
+        /// Replace returns a copy of the string s with all
+        /// non-overlapping instances of old replaced by new.
+        /// If old is empty, it matches at the beginning of the string
+        /// and after each UTF-8 sequence, yielding up to k+1 replacements
+        /// for a k-rune string.
+        /// </summary>
         public static Task<ReplaceResult> InvokeAsync(ReplaceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<ReplaceResult>("str:index:replace", args ?? new ReplaceArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Replace returns a copy of the string s with all
+        /// non-overlapping instances of old replaced by new.
+        /// If old is empty, it matches at the beginning of the string
+        /// and after each UTF-8 sequence, yielding up to k+1 replacements
+        /// for a k-rune string.
+        /// </summary>
         public static Output<ReplaceResult> Invoke(ReplaceInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<ReplaceResult>("str:index:replace", args ?? new ReplaceInvokeArgs(), options.WithDefaults());
     }

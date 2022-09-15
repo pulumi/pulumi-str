@@ -54,7 +54,8 @@ def replace(new: Optional[str] = None,
 
     :param str new: The new string.
            
-           Note: Inside repl, "$" signs are interpreted as an Expand, so for instance $1 represents the text of the first submatch. 
+           Note: Inside repl, "$" signs are interpreted as an Expand, so for instance
+           $1 represents the text of the first submatch. 
     :param str old: The regular expression to match against.
     :param str string: The string to operate over.
     """
@@ -83,7 +84,8 @@ def replace_output(new: Optional[pulumi.Input[str]] = None,
 
     :param str new: The new string.
            
-           Note: Inside repl, "$" signs are interpreted as an Expand, so for instance $1 represents the text of the first submatch. 
+           Note: Inside repl, "$" signs are interpreted as an Expand, so for instance
+           $1 represents the text of the first submatch. 
     :param str old: The regular expression to match against.
     :param str string: The string to operate over.
     """

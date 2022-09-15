@@ -37,3 +37,9 @@ test_nodejs: test_prep
 	cd tests/nodejs && pulumi up --yes --skip-preview
 	cd tests/nodejs && pulumi destroy --yes --skip-preview
 	cd tests/nodejs && pulumi stack rm --yes
+
+lint: lint-golang lint-copyright
+lint-golang:
+	cd str && golangci-lint run -c ../.golangci.yml --timeout 5m
+lint-copyright:
+	pulumictl copyright -x 'examples/**' -x 'sdk/**'

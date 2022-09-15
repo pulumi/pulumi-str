@@ -43,7 +43,11 @@ def replace(new: Optional[str] = None,
             string: Optional[str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableReplaceResult:
     """
-    Use this data source to access information about an existing resource.
+    Replace returns a copy of the string s with all
+    non-overlapping instances of old replaced by new.
+    If old is empty, it matches at the beginning of the string
+    and after each UTF-8 sequence, yielding up to k+1 replacements
+    for a k-rune string.
     """
     __args__ = dict()
     __args__['new'] = new
@@ -62,6 +66,10 @@ def replace_output(new: Optional[pulumi.Input[str]] = None,
                    string: Optional[pulumi.Input[str]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[ReplaceResult]:
     """
-    Use this data source to access information about an existing resource.
+    Replace returns a copy of the string s with all
+    non-overlapping instances of old replaced by new.
+    If old is empty, it matches at the beginning of the string
+    and after each UTF-8 sequence, yielding up to k+1 replacements
+    for a k-rune string.
     """
     ...
