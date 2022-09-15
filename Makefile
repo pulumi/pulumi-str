@@ -14,7 +14,7 @@ tidy:
 build_sdks: build
 	rm -r sdk
 	mkdir -p sdk
-	cd sdk && go mod init
+	cd sdk && go mod init github.com/pulumi/pulumi-str/sdk
 	${GEN} schema | jq > sdk/schema.json
 	${GEN} language nodejs
 	${GEN} language python
