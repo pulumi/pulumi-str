@@ -21,10 +21,16 @@ build_sdks: build
 	${GEN} language go
 	${GEN} language dotnet
 
+export PULUMI_CONFIG_PASSPHRASE := "not-secret"
 test_prep: build_sdks
+	mkdir $$PWD/state
+	pulumi login --cloud-url file://$$PWD/state
 test: test_go test_nodejs
+	pulumi logout
+	rm -r $$PWD/state
+	pulumi login
 test_go: test_prep
-	cd tests/golang && pulumi stack select -c dev
+	cd tests/golang && pulumi stack select -c test_go
 	cd tests/golang && pulumi up --yes --skip-preview
 	cd tests/golang && pulumi destroy --yes --skip-preview
 	cd tests/golang && pulumi stack rm --yes
@@ -33,7 +39,7 @@ test_nodejs: test_prep
 	cd sdk/nodejs && yarn link && yarn install
 	cd tests/nodejs && yarn link "@pulumi/str"
 	cd tests/nodejs && yarn install
-	cd tests/nodejs && pulumi stack select -c dev
+	cd tests/nodejs && pulumi stack select -c test_nodejs
 	cd tests/nodejs && pulumi up --yes --skip-preview
 	cd tests/nodejs && pulumi destroy --yes --skip-preview
 	cd tests/nodejs && pulumi stack rm --yes
