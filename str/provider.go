@@ -22,6 +22,9 @@ func Provider() p.Provider {
 	).WithLanguageMap(map[string]any{
 		"nodejs": map[string]any{
 			"respectSchemaVersion": true,
+			"dependencies": map[string]string{
+				"@pulumi/pulumi": "^3.0.0",
+			},
 		},
 	}).WithDescription("Basic string manipulation funcions").
 		WithDisplayName("String").

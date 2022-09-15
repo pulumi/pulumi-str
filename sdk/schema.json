@@ -8,6 +8,9 @@
   "publisher": "Pulumi",
   "language": {
     "nodejs": {
+      "dependencies": {
+        "@pulumi/pulumi": "^3.0.0"
+      },
       "respectSchemaVersion": true
     }
   },

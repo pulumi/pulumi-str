@@ -7,11 +7,11 @@
         "build": "tsc",
         "install": "node scripts/install-pulumi-plugin.js resource str 0.1.0"
     },
+    "dependencies": {
+        "@pulumi/pulumi": "^3.0.0"
+    },
     "devDependencies": {
         "typescript": "^4.3.5"
-    },
-    "peerDependencies": {
-        "@pulumi/pulumi": "latest"
     },
     "pulumi": {
         "resource": true,

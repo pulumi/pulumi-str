@@ -30,7 +30,8 @@ test_go: test_prep
 	cd tests/golang && pulumi stack rm --yes
 
 test_nodejs: test_prep
-	cd sdk/nodejs && yarn link
+	cd sdk/nodejs && yarn link && yarn install
+	cd tests/nodejs && yarn link "@pulumi/str"
 	cd tests/nodejs && yarn install
 	cd tests/nodejs && pulumi stack select -c dev
 	cd tests/nodejs && pulumi up --yes --skip-preview

@@ -1,7 +1,6 @@
 {
     "name": "test",
     "dependencies": {
-        "@pulumi/pulumi": "latest",
-        "@pulumi/str": "../../sdk/nodejs/"
+        "@pulumi/pulumi": "^3.40.0"
     }
 }
