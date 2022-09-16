@@ -108,6 +108,35 @@
         ]
       }
     },
+    "str:regexp:match": {
+      "description": "Match reports whether the string s contains any match of the regular expression pattern.",
+      "inputs": {
+        "properties": {
+          "pattern": {
+            "type": "string"
+          },
+          "string": {
+            "type": "string"
+          }
+        },
+        "type": "object",
+        "required": [
+          "string",
+          "pattern"
+        ]
+      },
+      "outputs": {
+        "properties": {
+          "matches": {
+            "type": "boolean"
+          }
+        },
+        "type": "object",
+        "required": [
+          "matches"
+        ]
+      }
+    },
     "str:regexp:replace": {
       "description": "A regex based replace on a string.\n\nThe underlying regexp engine is the go \"regexp\" stdlib package.\nYou can see details at for available patterns at https://pkg.go.dev/regexp/syntax.",
       "inputs": {

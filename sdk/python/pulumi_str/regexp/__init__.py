@@ -5,5 +5,6 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .match import *
 from .replace import *
 from .split import *
