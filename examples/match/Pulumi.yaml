@@ -1,0 +1,34 @@
+name: match-example
+runtime: yaml
+
+plugins:
+  providers:
+    - name: str
+      path: ../../bin
+
+
+variables:
+  myString: >
+    YAML: YAML Ain't Markup Language™
+outputs:
+  twoYAMLs: # true
+    Fn::Invoke:
+      Function: str:regexp:match
+      Arguments:
+        string: ${myString}
+        pattern: (YAML.*){2}
+      Return: matches
+  someMarkup: # true
+    Fn::Invoke:
+      Function: str:regexp:match
+      Arguments:
+        string: ${myString}
+        pattern: Markup
+      Return: matches
+  startingMarkup: # false
+    Fn::Invoke:
+      Function: str:regexp:match
+      Arguments:
+        string: ${myString}
+        pattern: ^Markup
+      Return: matches
