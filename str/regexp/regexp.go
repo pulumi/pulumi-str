@@ -108,3 +108,26 @@ func (*Split) Call(ctx p.Context, input SplitArgs) (SplitResult, error) {
 		Result: rgx.Split(input.S, n),
 	}, nil
 }
+
+type Match struct{}
+
+func (m *Match) Annotate(a infer.Annotator) {
+	a.Describe(m, "Match reports whether the string s contains any match of the regular expression pattern.")
+}
+
+type MatchArgs struct {
+	S       string `pulumi:"string"`
+	Pattern string `pulumi:"pattern"`
+}
+
+type MatchResult struct {
+	Matches bool `pulumi:"matches"`
+}
+
+func (*Match) Call(ctx p.Context, input MatchArgs) (MatchResult, error) {
+	m, err := regexp.MatchString(input.Pattern, input.S)
+	if err != nil {
+		return MatchResult{}, err
+	}
+	return MatchResult{m}, nil
+}

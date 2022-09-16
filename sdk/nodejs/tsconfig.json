@@ -16,6 +16,7 @@
         "index.ts",
         "provider.ts",
         "regexp/index.ts",
+        "regexp/match.ts",
         "regexp/replace.ts",
         "regexp/split.ts",
         "replace.ts",
