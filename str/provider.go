@@ -29,6 +29,7 @@ func Provider() p.Provider {
 		infer.Function[*TrimSuffix, TrimSuffixArgs, TrimSuffixResult](),
 		infer.Function[*regexp.Replace, regexp.ReplaceArgs, regexp.ReplaceResult](),
 		infer.Function[*regexp.Split, regexp.SplitArgs, regexp.SplitResult](),
+		infer.Function[*regexp.Match, regexp.MatchArgs, regexp.MatchResult](),
 	).WithModuleMap(
 		map[tokens.ModuleName]tokens.ModuleName{
 			"str": "index",
