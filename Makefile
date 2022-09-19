@@ -11,15 +11,20 @@ build:
 tidy:
 	cd str && go mod tidy
 
-build_sdks: build
+build_sdks: build build_dotnet_sdk build_nodejs_sdk build_python_sdk build_go_sdk
 	rm -r sdk
 	mkdir -p sdk
 	cd sdk && go mod init github.com/pulumi/pulumi-str/sdk
 	${GEN} schema | jq > sdk/schema.json
-	${GEN} language nodejs
-	${GEN} language python
-	${GEN} language go
+
+build_dotnet_sdk: build
 	${GEN} language dotnet
+build_nodejs_sdk: build
+	${GEN} language nodejs
+build_python_sdk: build
+	${GEN} language python
+build_go_sdk: build
+	${GEN} language go
 
 export PULUMI_CONFIG_PASSPHRASE := "not-secret"
 test_prep: build_sdks
