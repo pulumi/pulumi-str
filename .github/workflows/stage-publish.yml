@@ -11,6 +11,7 @@ on:
         description: "GitHub ref to use"
         type: string
       use-pulumictl:
+        type: boolean
         required: false
         default: true
         description: "Use pulumictl to derive a build tag"
