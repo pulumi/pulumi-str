@@ -1,6 +1,6 @@
 
 GEN     := ./bin/pulumi-gen-str
-VERSION := 0.0.6
+VERSION := 0.0.7
 
 build:
 	mkdir -p bin
