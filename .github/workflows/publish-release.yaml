@@ -30,6 +30,7 @@ jobs:
     secrets: inherit
     with:
       goreleaser-args: -p 10 -f .goreleaser.yml --rm-dist --skip-validate --timeout 60m0s --release-notes=CHANGELOG_PENDING.md
+      ref: ${{ github.ref }}
   publish_sdk:
     name: Publish SDKs
     runs-on: ubuntu-latest

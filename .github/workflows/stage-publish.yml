@@ -6,6 +6,10 @@ on:
       goreleaser-args:
         required: true
         type: string
+      ref:
+        required: true
+        description: "GitHub ref to use"
+        type: string
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -16,7 +20,9 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.ref }}
       - name: Unshallow clone for tags
         run: git fetch --prune --unshallow --tags || true
       - name: Install Go
