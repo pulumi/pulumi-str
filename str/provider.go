@@ -41,6 +41,11 @@ func Provider() p.Provider {
 				"@pulumi/pulumi": "^3.0.0",
 			},
 		},
+		"csharp": map[string]any{
+			"packageReferences": map[string]string{
+				"Pulumi": "3.*",
+			},
+		},
 	}).WithDescription("Basic string manipulation funcions").
 		WithDisplayName("String").
 		WithHomepage("https://github.com/pulumi/pulumi-str").

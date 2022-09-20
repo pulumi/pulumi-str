@@ -21,3 +21,7 @@ node_modules
 .DS_Store
 
 yarn.lock
+
+# csharp
+sdk/dotnet/version.txt
+sdk/dotnet/obj/**

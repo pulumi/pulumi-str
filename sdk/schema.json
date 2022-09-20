@@ -1,12 +1,17 @@
 {
   "name": "str",
   "displayName": "String",
-  "version": "0.1.0",
+  "version": "0.0.6",
   "description": "Basic string manipulation funcions",
   "homepage": "https://github.com/pulumi/pulumi-str",
   "repository": "https://github.com/pulumi/pulumi-str",
   "publisher": "Pulumi",
   "language": {
+    "csharp": {
+      "packageReferences": {
+        "Pulumi": "3.*"
+      }
+    },
     "nodejs": {
       "dependencies": {
         "@pulumi/pulumi": "^3.0.0"

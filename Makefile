@@ -1,6 +1,6 @@
 
 GEN     := ./bin/pulumi-gen-str
-VERSION := 0.1.0
+VERSION := 0.0.6
 
 build:
 	mkdir -p bin
@@ -13,14 +13,45 @@ tidy:
 
 sdk_prep: build
 	mkdir -p sdk
-build_sdks: build build_dotnet_sdk build_nodejs_sdk build_python_sdk build_go_sdk
+
+gen_sdks: gen_dotnet_sdk gen_nodejs_sdk gen_python_sdk gen_go_sdk
 	if [ -f sdk/go.mod ]; then rm sdk/go.mod; fi
 	cd sdk && go mod init github.com/pulumi/pulumi-str/sdk
 	${GEN} schema | jq > sdk/schema.json
 
-build_%_sdk: sdk_prep
+gen_%_sdk: sdk_prep
 	if [ -d sdk/$* ]; then rm -rf sdk/$*; fi
 	${GEN} language $*
+
+build_sdks: build_dotnet_sdk build_nodejs_sdk build_python_sdk build_go_sdk
+	if ! [ -f sdk/go.mod ]; then \
+		cd sdk && go mod init github.com/pulumi/pulumi-str/sdk; \
+	fi
+build_dotnet_sdk: gen_dotnet_sdk
+	cd sdk/dotnet/ && \
+		echo "${VERSION}" >version.txt && \
+		dotnet build /p:Version=${VERSION}
+
+build_nodejs_sdk: gen_nodejs_sdk
+	cd sdk/nodejs/ && \
+		yarn install && \
+		yarn run tsc --version && \
+		yarn run tsc && \
+		cp -R scripts/ bin && \
+		cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
+		sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json && \
+		rm ./bin/package.json.bak
+
+build_python_sdk: gen_python_sdk
+	cd sdk/python/ && \
+		python3 setup.py clean --all 2>/dev/null && \
+		rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
+		sed -i.bak -e 's/^VERSION = .*/VERSION = "$(VERSION)"/g' -e 's/^PLUGIN_VERSION = .*/PLUGIN_VERSION = "$(VERSION)"/g' ./bin/setup.py && \
+		rm ./bin/setup.py.bak && \
+		cd ./bin && python3 setup.py build sdist
+
+build_go_sdk: gen_go_sdk
+	# No-op
 
 export PULUMI_CONFIG_PASSPHRASE := "not-secret"
 test_prep: build_sdks
