@@ -10,6 +10,10 @@ on:
         required: true
         description: "GitHub ref to use"
         type: string
+      use-pulumictl:
+        required: false
+        default: true
+        description: "Use pulumictl to derive a build tag"
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -29,6 +33,15 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: 1.18.x
+      - name: Install pulumictl
+        if: ${{ inputs.use-pulumictl }}
+        uses: jaxxstorm/action-install-gh-release@v1.5.0
+        with:
+          repo: pulumi/pulumictl
+      - name: Set goreleaser Tag
+        if: ${{ inputs.use-pulumictl }}
+        run: |
+          echo "GORELEASER_CURRENT_TAG=v$(pulumictl get version --language generic)" >> $GITHUB_ENV
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v2
         with:
