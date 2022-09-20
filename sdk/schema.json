@@ -7,6 +7,11 @@
   "repository": "https://github.com/pulumi/pulumi-str",
   "publisher": "Pulumi",
   "language": {
+    "csharp": {
+      "packageReferences": {
+        "Pulumi": "3.*"
+      }
+    },
     "nodejs": {
       "dependencies": {
         "@pulumi/pulumi": "^3.0.0"

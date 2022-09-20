@@ -23,15 +23,16 @@ gen_%_sdk: sdk_prep
 	if [ -d sdk/$* ]; then rm -rf sdk/$*; fi
 	${GEN} language $*
 
-build_%_sdk: gen_%s_sdk
-
 build_sdks: build_dotnet_sdk build_nodejs_sdk build_python_sdk build_go_sdk
-build_dotnet_sdk:
+	if ! [ -f sdk/go.mod ]; then \
+		cd sdk && go mod init github.com/pulumi/pulumi-str/sdk; \
+	fi
+build_dotnet_sdk: gen_dotnet_sdk
 	cd sdk/dotnet/ && \
 		echo "${VERSION}" >version.txt && \
 		dotnet build /p:Version=${VERSION}
 
-build_nodejs_sdk:
+build_nodejs_sdk: gen_nodejs_sdk
 	cd sdk/nodejs/ && \
 		yarn install && \
 		yarn run tsc --version && \
@@ -41,7 +42,7 @@ build_nodejs_sdk:
 		sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json && \
 		rm ./bin/package.json.bak
 
-build_python_sdk:
+build_python_sdk: gen_python_sdk
 	cd sdk/python/ && \
 		python3 setup.py clean --all 2>/dev/null && \
 		rm -rf ./bin/ ../python.bin/ && cp -R . ../python.bin && mv ../python.bin ./bin && \
@@ -49,7 +50,7 @@ build_python_sdk:
 		rm ./bin/setup.py.bak && \
 		cd ./bin && python3 setup.py build sdist
 
-build_go_sdk:
+build_go_sdk: gen_go_sdk
 	# No-op
 
 export PULUMI_CONFIG_PASSPHRASE := "not-secret"
