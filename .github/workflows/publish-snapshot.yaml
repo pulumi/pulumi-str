@@ -23,3 +23,4 @@ jobs:
     with:
       goreleaser-args: -p 10 -f .goreleaser.prerelease.yml --rm-dist --skip-validate --timeout 60m0s --release-notes=CHANGELOG_PENDING.md
       ref: ${{ github.ref }}
+      use-pulumictl: true
