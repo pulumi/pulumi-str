@@ -2,7 +2,7 @@
   "name": "str",
   "displayName": "String",
   "version": "0.0.7",
-  "description": "Basic string manipulation funcions",
+  "description": "Basic string manipulation functions",
   "homepage": "https://github.com/pulumi/pulumi-str",
   "repository": "https://github.com/pulumi/pulumi-str",
   "publisher": "Pulumi",

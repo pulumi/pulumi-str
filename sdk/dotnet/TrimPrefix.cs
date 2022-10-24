@@ -15,13 +15,13 @@ namespace Pulumi.Str
         /// Trim a prefix from a string.
         /// </summary>
         public static Task<TrimPrefixResult> InvokeAsync(TrimPrefixArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<TrimPrefixResult>("str:index:trimPrefix", args ?? new TrimPrefixArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<TrimPrefixResult>("str:index:trimPrefix", args ?? new TrimPrefixArgs(), options.WithDefaults());
 
         /// <summary>
         /// Trim a prefix from a string.
         /// </summary>
         public static Output<TrimPrefixResult> Invoke(TrimPrefixInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<TrimPrefixResult>("str:index:trimPrefix", args ?? new TrimPrefixInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<TrimPrefixResult>("str:index:trimPrefix", args ?? new TrimPrefixInvokeArgs(), options.WithDefaults());
     }
 
 

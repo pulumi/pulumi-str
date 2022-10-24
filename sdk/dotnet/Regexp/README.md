@@ -1,1 +1,1 @@
-Basic string manipulation funcions
+Basic string manipulation functions

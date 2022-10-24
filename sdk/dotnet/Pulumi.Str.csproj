@@ -4,7 +4,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>Pulumi</Authors>
     <Company>Pulumi</Company>
-    <Description>Basic string manipulation funcions</Description>
+    <Description>Basic string manipulation functions</Description>
     <PackageLicenseExpression></PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/pulumi/pulumi-str</PackageProjectUrl>
     <RepositoryUrl>https://github.com/pulumi/pulumi-str</RepositoryUrl>

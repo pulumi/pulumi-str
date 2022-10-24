@@ -39,7 +39,7 @@ def readme():
 
 setup(name='pulumi_str',
       version=VERSION,
-      description="Basic string manipulation funcions",
+      description="Basic string manipulation functions",
       long_description=readme(),
       long_description_content_type='text/markdown',
       cmdclass={

@@ -5,10 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./provider";
-export * from "./replace";
-export * from "./trimPrefix";
-export * from "./trimSuffix";
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { ReplaceArgs, ReplaceResult, ReplaceOutputArgs } from "./replace";
+export const replace: typeof import("./replace").replace = null as any;
+export const replaceOutput: typeof import("./replace").replaceOutput = null as any;
+utilities.lazyLoad(exports, ["replace","replaceOutput"], () => require("./replace"));
+
+export { TrimPrefixArgs, TrimPrefixResult, TrimPrefixOutputArgs } from "./trimPrefix";
+export const trimPrefix: typeof import("./trimPrefix").trimPrefix = null as any;
+export const trimPrefixOutput: typeof import("./trimPrefix").trimPrefixOutput = null as any;
+utilities.lazyLoad(exports, ["trimPrefix","trimPrefixOutput"], () => require("./trimPrefix"));
+
+export { TrimSuffixArgs, TrimSuffixResult, TrimSuffixOutputArgs } from "./trimSuffix";
+export const trimSuffix: typeof import("./trimSuffix").trimSuffix = null as any;
+export const trimSuffixOutput: typeof import("./trimSuffix").trimSuffixOutput = null as any;
+utilities.lazyLoad(exports, ["trimSuffix","trimSuffixOutput"], () => require("./trimSuffix"));
+
 
 // Export sub-modules:
 import * as regexp from "./regexp";
@@ -16,9 +32,6 @@ import * as regexp from "./regexp";
 export {
     regexp,
 };
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("str", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

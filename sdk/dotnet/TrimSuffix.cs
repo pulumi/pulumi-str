@@ -15,13 +15,13 @@ namespace Pulumi.Str
         /// Trim a suffix from a string.
         /// </summary>
         public static Task<TrimSuffixResult> InvokeAsync(TrimSuffixArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<TrimSuffixResult>("str:index:trimSuffix", args ?? new TrimSuffixArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<TrimSuffixResult>("str:index:trimSuffix", args ?? new TrimSuffixArgs(), options.WithDefaults());
 
         /// <summary>
         /// Trim a suffix from a string.
         /// </summary>
         public static Output<TrimSuffixResult> Invoke(TrimSuffixInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<TrimSuffixResult>("str:index:trimSuffix", args ?? new TrimSuffixInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<TrimSuffixResult>("str:index:trimSuffix", args ?? new TrimSuffixInvokeArgs(), options.WithDefaults());
     }
 
 

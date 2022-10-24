@@ -17,38 +17,44 @@ package str
 import (
 	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
+	"github.com/pulumi/pulumi-go-provider/middleware/schema"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
 	"github.com/pulumi/pulumi-str/str/regexp"
 )
 
 func Provider() p.Provider {
-	return infer.NewProvider().WithFunctions(
-		infer.Function[*Replace, ReplaceArgs, ReplaceResult](),
-		infer.Function[*TrimPrefix, TrimPrefixArgs, TrimPrefixResult](),
-		infer.Function[*TrimSuffix, TrimSuffixArgs, TrimSuffixResult](),
-		infer.Function[*regexp.Replace, regexp.ReplaceArgs, regexp.ReplaceResult](),
-		infer.Function[*regexp.Split, regexp.SplitArgs, regexp.SplitResult](),
-		infer.Function[*regexp.Match, regexp.MatchArgs, regexp.MatchResult](),
-	).WithModuleMap(
-		map[tokens.ModuleName]tokens.ModuleName{
+	return infer.Provider(infer.Options{
+		Metadata: schema.Metadata{
+			Description: "Basic string manipulation functions",
+			DisplayName: "String",
+			Publisher:   "Pulumi",
+			Homepage:    "https://github.com/pulumi/pulumi-str",
+			Repository:  "https://github.com/pulumi/pulumi-str",
+			LanguageMap: map[string]any{
+				"nodejs": map[string]any{
+					"respectSchemaVersion": true,
+					"dependencies": map[string]string{
+						"@pulumi/pulumi": "^3.0.0",
+					},
+				},
+				"csharp": map[string]any{
+					"packageReferences": map[string]string{
+						"Pulumi": "3.*",
+					},
+				},
+			},
+		},
+		Functions: []infer.InferredFunction{
+			infer.Function[*Replace, ReplaceArgs, ReplaceResult](),
+			infer.Function[*TrimPrefix, TrimPrefixArgs, TrimPrefixResult](),
+			infer.Function[*TrimSuffix, TrimSuffixArgs, TrimSuffixResult](),
+			infer.Function[*regexp.Replace, regexp.ReplaceArgs, regexp.ReplaceResult](),
+			infer.Function[*regexp.Split, regexp.SplitArgs, regexp.SplitResult](),
+			infer.Function[*regexp.Match, regexp.MatchArgs, regexp.MatchResult](),
+		},
+		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
 			"str": "index",
 		},
-	).WithLanguageMap(map[string]any{
-		"nodejs": map[string]any{
-			"respectSchemaVersion": true,
-			"dependencies": map[string]string{
-				"@pulumi/pulumi": "^3.0.0",
-			},
-		},
-		"csharp": map[string]any{
-			"packageReferences": map[string]string{
-				"Pulumi": "3.*",
-			},
-		},
-	}).WithDescription("Basic string manipulation funcions").
-		WithDisplayName("String").
-		WithHomepage("https://github.com/pulumi/pulumi-str").
-		WithPublisher("Pulumi").
-		WithRepository("https://github.com/pulumi/pulumi-str")
+	})
 }
