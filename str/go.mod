@@ -9,8 +9,6 @@ require (
 	github.com/spf13/cobra v1.6.0
 )
 
-replace github.com/pulumi/pulumi-go-provider => ../../pulumi-go-provider
-
 require (
 	cloud.google.com/go v0.103.0 // indirect
 	cloud.google.com/go/compute v1.7.0 // indirect
