@@ -15,13 +15,13 @@ namespace Pulumi.Str.Regexp
         /// Split a string on a regex.
         /// </summary>
         public static Task<SplitResult> InvokeAsync(SplitArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<SplitResult>("str:regexp:split", args ?? new SplitArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<SplitResult>("str:regexp:split", args ?? new SplitArgs(), options.WithDefaults());
 
         /// <summary>
         /// Split a string on a regex.
         /// </summary>
         public static Output<SplitResult> Invoke(SplitInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<SplitResult>("str:regexp:split", args ?? new SplitInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<SplitResult>("str:regexp:split", args ?? new SplitInvokeArgs(), options.WithDefaults());
     }
 
 

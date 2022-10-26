@@ -18,7 +18,7 @@ namespace Pulumi.Str.Regexp
         /// You can see details at for available patterns at https://pkg.go.dev/regexp/syntax.
         /// </summary>
         public static Task<ReplaceResult> InvokeAsync(ReplaceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<ReplaceResult>("str:regexp:replace", args ?? new ReplaceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<ReplaceResult>("str:regexp:replace", args ?? new ReplaceArgs(), options.WithDefaults());
 
         /// <summary>
         /// A regex based replace on a string.
@@ -27,7 +27,7 @@ namespace Pulumi.Str.Regexp
         /// You can see details at for available patterns at https://pkg.go.dev/regexp/syntax.
         /// </summary>
         public static Output<ReplaceResult> Invoke(ReplaceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<ReplaceResult>("str:regexp:replace", args ?? new ReplaceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<ReplaceResult>("str:regexp:replace", args ?? new ReplaceInvokeArgs(), options.WithDefaults());
     }
 
 

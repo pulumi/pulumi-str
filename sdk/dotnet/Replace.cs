@@ -19,7 +19,7 @@ namespace Pulumi.Str
         /// for a k-rune string.
         /// </summary>
         public static Task<ReplaceResult> InvokeAsync(ReplaceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<ReplaceResult>("str:index:replace", args ?? new ReplaceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<ReplaceResult>("str:index:replace", args ?? new ReplaceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Replace returns a copy of the string s with all
@@ -29,7 +29,7 @@ namespace Pulumi.Str
         /// for a k-rune string.
         /// </summary>
         public static Output<ReplaceResult> Invoke(ReplaceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<ReplaceResult>("str:index:replace", args ?? new ReplaceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<ReplaceResult>("str:index:replace", args ?? new ReplaceInvokeArgs(), options.WithDefaults());
     }
 
 

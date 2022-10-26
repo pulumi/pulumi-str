@@ -15,13 +15,13 @@ namespace Pulumi.Str.Regexp
         /// Match reports whether the string s contains any match of the regular expression pattern.
         /// </summary>
         public static Task<MatchResult> InvokeAsync(MatchArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<MatchResult>("str:regexp:match", args ?? new MatchArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<MatchResult>("str:regexp:match", args ?? new MatchArgs(), options.WithDefaults());
 
         /// <summary>
         /// Match reports whether the string s contains any match of the regular expression pattern.
         /// </summary>
         public static Output<MatchResult> Invoke(MatchInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<MatchResult>("str:regexp:match", args ?? new MatchInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<MatchResult>("str:regexp:match", args ?? new MatchInvokeArgs(), options.WithDefaults());
     }
 
 

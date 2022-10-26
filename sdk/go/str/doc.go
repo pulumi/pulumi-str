@@ -1,3 +1,3 @@
-// Basic string manipulation funcions
+// Basic string manipulation functions
 
 package str
