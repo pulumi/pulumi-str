@@ -1,5 +1,3 @@
-
-GEN     := ./bin/pulumi-gen-str
 VERSION := 1.0.0
 
 build:
