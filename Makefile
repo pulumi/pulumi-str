@@ -1,6 +1,6 @@
 
 GEN     := ./bin/pulumi-gen-str
-VERSION := 0.0.7
+VERSION := 1.0.0
 
 build:
 	mkdir -p bin
@@ -14,14 +14,16 @@ tidy:
 sdk_prep: build
 	mkdir -p sdk
 
-gen_sdks: gen_dotnet_sdk gen_nodejs_sdk gen_python_sdk gen_go_sdk
+gen_sdks: gen_dotnet_sdk gen_nodejs_sdk gen_python_sdk gen_go_sdk gen_schema
 	if [ -f sdk/go.mod ]; then rm sdk/go.mod; fi
 	cd sdk && go mod init github.com/pulumi/pulumi-str/sdk
-	${GEN} schema | jq > sdk/schema.json
+
+gen_schema: sdk_prep
+	pulumi package get-schema bin/pulumi-resource-str > sdk/schema.json
 
 gen_%_sdk: sdk_prep
 	if [ -d sdk/$* ]; then rm -rf sdk/$*; fi
-	${GEN} language $*
+	pulumi package gen-sdk bin/pulumi-resource-str --language "$*" --out sdk
 
 build_sdks: build_dotnet_sdk build_nodejs_sdk build_python_sdk build_go_sdk
 	if ! [ -f sdk/go.mod ]; then \

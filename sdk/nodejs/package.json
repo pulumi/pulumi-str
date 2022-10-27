@@ -1,11 +1,11 @@
 {
     "name": "@pulumi/str",
-    "version": "0.0.7",
+    "version": "1.0.0",
     "homepage": "https://github.com/pulumi/pulumi-str",
     "repository": "https://github.com/pulumi/pulumi-str",
     "scripts": {
         "build": "tsc",
-        "install": "node scripts/install-pulumi-plugin.js resource str 0.0.7"
+        "install": "node scripts/install-pulumi-plugin.js resource str 1.0.0"
     },
     "dependencies": {
         "@pulumi/pulumi": "^3.0.0"
@@ -16,6 +16,6 @@
     "pulumi": {
         "resource": true,
         "name": "str",
-        "version": "0.0.7"
+        "version": "1.0.0"
     }
 }
