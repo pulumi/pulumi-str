@@ -1,11 +1,14 @@
 {
   "name": "str",
   "displayName": "String",
-  "version": "0.0.7",
+  "version": "1.0.0",
   "description": "Basic string manipulation functions",
   "homepage": "https://github.com/pulumi/pulumi-str",
   "repository": "https://github.com/pulumi/pulumi-str",
   "publisher": "Pulumi",
+  "meta": {
+    "moduleFormat": "(.*)"
+  },
   "language": {
     "csharp": {
       "packageReferences": {
@@ -20,7 +23,9 @@
     }
   },
   "config": {},
-  "provider": {},
+  "provider": {
+    "type": "object"
+  },
   "functions": {
     "str:index:replace": {
       "description": "Replace returns a copy of the string s with all\nnon-overlapping instances of old replaced by new.\nIf old is empty, it matches at the beginning of the string\nand after each UTF-8 sequence, yielding up to k+1 replacements\nfor a k-rune string.",
@@ -38,9 +43,9 @@
         },
         "type": "object",
         "required": [
-          "string",
+          "new",
           "old",
-          "new"
+          "string"
         ]
       },
       "outputs": {
@@ -68,8 +73,8 @@
         },
         "type": "object",
         "required": [
-          "string",
-          "prefix"
+          "prefix",
+          "string"
         ]
       },
       "outputs": {
@@ -126,8 +131,8 @@
         },
         "type": "object",
         "required": [
-          "string",
-          "pattern"
+          "pattern",
+          "string"
         ]
       },
       "outputs": {
@@ -161,9 +166,9 @@
         },
         "type": "object",
         "required": [
-          "string",
+          "new",
           "old",
-          "new"
+          "string"
         ]
       },
       "outputs": {
@@ -185,7 +190,7 @@
         "properties": {
           "count": {
             "type": "integer",
-            "description": "`count` determines the number of substrings to return. \nIf `count` is not provided, it defaults to substrings.\nIf `count` is provided then the last substring will be the unsplit remainder.\nIt is an error to pass `count < 1`."
+            "description": "`count` determines the number of substrings to return. \nIf `count` is not provided, it defaults to substrings.\nIf `count` is provided then the last substring will be the unsplit remainder.\nIt is an error to pass `count \u003c 1`."
           },
           "on": {
             "type": "string",
@@ -198,8 +203,8 @@
         },
         "type": "object",
         "required": [
-          "string",
-          "on"
+          "on",
+          "string"
         ]
       },
       "outputs": {
