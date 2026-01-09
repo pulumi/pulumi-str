@@ -1,4 +1,4 @@
-# pulumi-str
+# WARNING!!! Due to usage of this provider we are planing to archive this, please let us know if you are using it and it will cause you an inconvience. 
 
 Cross language string manipulation functions
 
