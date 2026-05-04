@@ -15,10 +15,10 @@
 package regexp
 
 import (
+	"context"
 	"fmt"
 	"regexp"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -33,13 +33,16 @@ type ReplaceResult struct {
 	Result string `pulumi:"result"`
 }
 
-func (*Replace) Call(ctx p.Context, input ReplaceArgs) (ReplaceResult, error) {
+func (*Replace) Invoke(ctx context.Context, req infer.FunctionRequest[ReplaceArgs]) (infer.FunctionResponse[ReplaceResult], error) {
+	input := req.Input
 	rgx, err := regexp.Compile(input.Old)
 	if err != nil {
-		return ReplaceResult{}, err
+		return infer.FunctionResponse[ReplaceResult]{}, err
 	}
-	return ReplaceResult{
-		Result: rgx.ReplaceAllString(input.S, input.New),
+	return infer.FunctionResponse[ReplaceResult]{
+		Output: ReplaceResult{
+			Result: rgx.ReplaceAllString(input.S, input.New),
+		},
 	}, nil
 }
 
@@ -92,20 +95,22 @@ func (s *SplitResult) Annotate(a infer.Annotator) {
 	a.Describe(&s.Result, "The result of the string split.")
 }
 
-func (*Split) Call(ctx p.Context, input SplitArgs) (SplitResult, error) {
-	rgx, err := regexp.Compile(input.On)
+func (*Split) Invoke(ctx context.Context, input infer.FunctionRequest[SplitArgs]) (infer.FunctionResponse[SplitResult], error) {
+	rgx, err := regexp.Compile(input.Input.On)
 	if err != nil {
-		return SplitResult{}, err
+		return infer.FunctionResponse[SplitResult]{}, err
 	}
 	n := -1
-	if input.N != nil {
-		if *input.N <= 0 {
-			return SplitResult{}, fmt.Errorf("count <= 0 is not allowed")
+	if input.Input.N != nil {
+		if *input.Input.N <= 0 {
+			return infer.FunctionResponse[SplitResult]{}, fmt.Errorf("count <= 0 is not allowed")
 		}
-		n = *input.N
+		n = *input.Input.N
 	}
-	return SplitResult{
-		Result: rgx.Split(input.S, n),
+	return infer.FunctionResponse[SplitResult]{
+		Output: SplitResult{
+			Result: rgx.Split(input.Input.S, n),
+		},
 	}, nil
 }
 
@@ -124,10 +129,10 @@ type MatchResult struct {
 	Matches bool `pulumi:"matches"`
 }
 
-func (*Match) Call(ctx p.Context, input MatchArgs) (MatchResult, error) {
-	m, err := regexp.MatchString(input.Pattern, input.S)
+func (*Match) Invoke(ctx context.Context, req infer.FunctionRequest[MatchArgs]) (infer.FunctionResponse[MatchResult], error) {
+	m, err := regexp.MatchString(req.Input.Pattern, req.Input.S)
 	if err != nil {
-		return MatchResult{}, err
+		return infer.FunctionResponse[MatchResult]{}, err
 	}
-	return MatchResult{m}, nil
+	return infer.FunctionResponse[MatchResult]{Output: MatchResult{m}}, nil
 }
