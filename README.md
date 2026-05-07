@@ -1,8 +1,8 @@
-# WARNING!!! Due to usage of this provider we are planing to archive this, please let us know if you are using it and it will cause you an inconvience. 
+# pulumi-str
 
-Cross language string manipulation functions
+> **This provider is deprecated and is no longer maintained.** It will be archived in the near future. If you are actively using it and archival would cause you problems, please [open an issue](https://github.com/pulumi/pulumi-str/issues/new/choose) so we can hear from you.
 
-Note: This provider is in public beta.
+Cross language string manipulation functions.
 
 ## Provided functions
 
