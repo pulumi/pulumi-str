@@ -3,8 +3,9 @@ VERSION := 1.0.0
 build:
 	mkdir -p bin
 	cd str && go build \
-		-o ../bin \
-		-ldflags "-X github.com/pulumi/pulumi-str/str/version.Version=${VERSION}" ./...
+		-o ../bin/pulumi-resource-str \
+		-ldflags "-X github.com/pulumi/pulumi-str/str/version.Version=${VERSION}" \
+		./cmd/pulumi-resource-str
 
 tidy:
 	cd str && go mod tidy
