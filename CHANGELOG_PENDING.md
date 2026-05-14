@@ -1,0 +1,3 @@
+- Upgrade `pulumi-go-provider` SDK to latest version
+- Update `infer.FunctionRequest` / `infer.FunctionResponse` API usage in `index.go` and `regexp/regexp.go`
+- Update `provider.go` to align with the new `infer.Options` interface

@@ -15,9 +15,9 @@
 package str
 
 import (
+	"context"
 	"strings"
 
-	p "github.com/pulumi/pulumi-go-provider"
 	"github.com/pulumi/pulumi-go-provider/infer"
 )
 
@@ -40,9 +40,12 @@ type ReplaceResult struct {
 	Result string `pulumi:"result"`
 }
 
-func (*Replace) Call(ctx p.Context, input ReplaceArgs) (ReplaceResult, error) {
-	return ReplaceResult{
-		Result: strings.ReplaceAll(input.S, input.Old, input.New),
+func (*Replace) Invoke(ctx context.Context, req infer.FunctionRequest[ReplaceArgs]) (infer.FunctionResponse[ReplaceResult], error) {
+	input := req.Input
+	return infer.FunctionResponse[ReplaceResult]{
+		Output: ReplaceResult{
+			Result: strings.ReplaceAll(input.S, input.Old, input.New),
+		},
 	}, nil
 }
 
@@ -55,9 +58,11 @@ type TrimPrefixResult struct {
 	Result string `pulumi:"result"`
 }
 
-func (*TrimPrefix) Call(ctx p.Context, input TrimPrefixArgs) (TrimPrefixResult, error) {
-	return TrimPrefixResult{
-		Result: strings.TrimPrefix(input.S, input.Prefix),
+func (*TrimPrefix) Invoke(ctx context.Context, req infer.FunctionRequest[TrimPrefixArgs]) (infer.FunctionResponse[TrimPrefixResult], error) {
+	return infer.FunctionResponse[TrimPrefixResult]{
+		Output: TrimPrefixResult{
+			Result: strings.TrimPrefix(req.Input.S, req.Input.Prefix),
+		},
 	}, nil
 }
 
@@ -74,9 +79,11 @@ type TrimSuffixResult struct {
 	Result string `pulumi:"result"`
 }
 
-func (*TrimSuffix) Call(ctx p.Context, input TrimSuffixArgs) (TrimSuffixResult, error) {
-	return TrimSuffixResult{
-		Result: strings.TrimSuffix(input.S, input.Suffix),
+func (*TrimSuffix) Invoke(ctx context.Context, req infer.FunctionRequest[TrimSuffixArgs]) (infer.FunctionResponse[TrimSuffixResult], error) {
+	return infer.FunctionResponse[TrimSuffixResult]{
+		Output: TrimSuffixResult{
+			Result: strings.TrimSuffix(req.Input.S, req.Input.Suffix),
+		},
 	}, nil
 }
 

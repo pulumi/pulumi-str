@@ -46,12 +46,12 @@ func Provider() p.Provider {
 			},
 		},
 		Functions: []infer.InferredFunction{
-			infer.Function[*Replace, ReplaceArgs, ReplaceResult](),
-			infer.Function[*TrimPrefix, TrimPrefixArgs, TrimPrefixResult](),
-			infer.Function[*TrimSuffix, TrimSuffixArgs, TrimSuffixResult](),
-			infer.Function[*regexp.Replace, regexp.ReplaceArgs, regexp.ReplaceResult](),
-			infer.Function[*regexp.Split, regexp.SplitArgs, regexp.SplitResult](),
-			infer.Function[*regexp.Match, regexp.MatchArgs, regexp.MatchResult](),
+			infer.Function[*Replace, ReplaceArgs, ReplaceResult](&Replace{}),
+			infer.Function[*TrimPrefix, TrimPrefixArgs, TrimPrefixResult](&TrimPrefix{}),
+			infer.Function[*TrimSuffix, TrimSuffixArgs, TrimSuffixResult](&TrimSuffix{}),
+			infer.Function[*regexp.Replace, regexp.ReplaceArgs, regexp.ReplaceResult](&regexp.Replace{}),
+			infer.Function[*regexp.Split, regexp.SplitArgs, regexp.SplitResult](&regexp.Split{}),
+			infer.Function[*regexp.Match, regexp.MatchArgs, regexp.MatchResult](&regexp.Match{}),
 		},
 		ModuleMap: map[tokens.ModuleName]tokens.ModuleName{
 			"str": "index",
